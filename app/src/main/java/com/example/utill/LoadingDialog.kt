@@ -5,7 +5,7 @@ import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Window
-import com.example.view.databinding.DialogLoadingBinding
+import com.example.roomexam.databinding.DialogLoadingBinding
 
 class LoadingDialog(context: Context) : Dialog(context) {
     private lateinit var binding: DialogLoadingBinding

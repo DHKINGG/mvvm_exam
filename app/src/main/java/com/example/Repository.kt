@@ -34,6 +34,7 @@ class Repository(application: Application) {
         } catch (_: Exception) {
         }
     }
+    //
 
     //1.remote 객체 만들어여하고
     //2.db값이 비어있지않으면 그냥 return 떄리고
