@@ -7,8 +7,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.config.BaseActivity
-import com.example.data.Contact
-import com.example.mvvmexam.Adapter.HospitalAdapter
+import com.example.data.room.Contact
+import com.example.Adapter.HospitalAdapter
 import com.example.roomexam.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
@@ -32,6 +32,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             deleteDialog(contact)
         })
 
+        hospitalViewModel.getHome()
+
+
         val lm = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         val rv = binding.rvMain
         val fab = binding.fabAddHospital
@@ -48,6 +51,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             startActivity(intent)
         }
     }
+
+
+
 
     private fun deleteDialog(contact: Contact) {
         val builder = AlertDialog.Builder(this)

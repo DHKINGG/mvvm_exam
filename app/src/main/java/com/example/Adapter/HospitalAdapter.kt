@@ -1,11 +1,12 @@
-package com.example.mvvmexam.Adapter
+package com.example.Adapter
 
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.data.Contact
+import com.example.data.room.Contact
+import com.example.model.HomeBookModel
 import com.example.roomexam.databinding.ItemHospitalBinding
 
 

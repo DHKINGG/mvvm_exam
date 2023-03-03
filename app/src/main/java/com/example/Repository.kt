@@ -2,9 +2,9 @@ package com.example
 
 import android.app.Application
 import androidx.lifecycle.LiveData
-import com.example.data.Contact
-import com.example.data.DataBase
-import com.example.data.HospitalDao
+import com.example.data.room.Contact
+import com.example.data.room.DataBase
+import com.example.data.room.HospitalDao
 
 class Repository(application: Application) {
 
@@ -34,6 +34,8 @@ class Repository(application: Application) {
         } catch (_: Exception) {
         }
     }
+
+
     //
 
     //1.remote 객체 만들어여하고

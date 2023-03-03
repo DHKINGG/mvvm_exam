@@ -1,37 +1,31 @@
-package com.example.view
+package com.example.data.Remote
 
-import android.app.Application
 import android.util.Log
-import androidx.lifecycle.*
-import com.example.data.room.Contact
-import com.example.Repository
-import com.example.api.ApiInterface
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.example.Api.RemoteDataSource
 import com.example.config.ApplicationClass
+import com.example.api.ApiInterface
 import com.example.model.HospitalModel
+import com.example.model.LocalDataModel
+import io.reactivex.rxjava3.core.Single
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HospitalViewModel(application: Application) : AndroidViewModel(application) {
+class RemoteDataSourceImpl constructor(private val apiInterface: ApiInterface):
+    RemoteDataSource{
 
-    private val repository = Repository(application)
-    private val contacts = repository.getAll()
     private var _homeData: MutableLiveData<HospitalModel> = MutableLiveData()
     val homeData: LiveData<HospitalModel> = _homeData
 
 
-    fun getAll(): LiveData<List<Contact>> {
-        return this.contacts
-    }
-    fun insert(contact: Contact) {
-        repository.insert(contact)
+    override fun getHospital(apiKey: String, startIndex: String, endIndex: String, ): Call<HospitalModel> {
+        return apiInterface.getHomeBookApi(ApplicationClass.apiKey, "1", "8")
+
     }
 
-    fun delete(contact: Contact) {
-        repository.delete(contact)
-    }
-
-    fun getHome() {
+    override fun getHome() {
         val api = ApiInterface.create()
         api.getHomeBookApi(ApplicationClass.apiKey, "1", "8").enqueue(object :
             Callback<HospitalModel> {
@@ -46,12 +40,4 @@ class HospitalViewModel(application: Application) : AndroidViewModel(application
         })
     }
 
-
-
-
-    class Factory(private val application: Application) : ViewModelProvider.Factory {
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return HospitalViewModel(application) as T
-        }
-    }
 }

@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.config.BaseActivity
-import com.example.data.Contact
+import com.example.data.room.Contact
 import com.example.roomexam.databinding.ActivityAddBinding
 
 
@@ -17,6 +17,7 @@ class AddActivity :  BaseActivity<ActivityAddBinding>(ActivityAddBinding::inflat
 
         val mainText = binding.edtAddMainText
         val title = binding.edtAddMainTitle
+
         hospitalViewModel = ViewModelProvider(this)[HospitalViewModel::class.java]
 
         if (intent != null && intent.hasExtra(EXTRA_HOSPITAL) && intent.hasExtra(EXTRA_HOSPITAL_TYPE)
@@ -36,6 +37,7 @@ class AddActivity :  BaseActivity<ActivityAddBinding>(ActivityAddBinding::inflat
                 val initial = title[0].uppercaseChar()
                 val contact = Contact(id, title, mainText, initial)
                 hospitalViewModel.insert(contact)
+
                 finish()
             }
         }
