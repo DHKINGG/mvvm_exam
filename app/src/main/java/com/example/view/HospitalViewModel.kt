@@ -31,6 +31,8 @@ class HospitalViewModel(application: Application) : AndroidViewModel(application
         repository.delete(contact)
     }
 
+
+
     fun getHome() {
         val api = ApiInterface.create()
         api.getHomeBookApi(ApplicationClass.apiKey, "1", "8").enqueue(object :

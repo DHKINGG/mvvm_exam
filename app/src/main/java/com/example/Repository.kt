@@ -36,6 +36,8 @@ class Repository(application: Application) {
     }
 
 
+
+
     //
 
     //1.remote 객체 만들어여하고

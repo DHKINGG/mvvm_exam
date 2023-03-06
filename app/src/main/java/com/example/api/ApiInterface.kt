@@ -1,6 +1,6 @@
 package com.example.api
 
-import com.example.Api.RemoteDataSource
+
 import com.example.config.ApplicationClass
 import com.example.model.HospitalModel
 import retrofit2.Call

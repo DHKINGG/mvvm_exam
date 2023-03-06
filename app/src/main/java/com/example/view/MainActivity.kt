@@ -15,8 +15,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
     private val hospitalViewModel by lazy {
         ViewModelProvider(this,HospitalViewModel.Factory(application))[HospitalViewModel::class.java]
-        //viewModel을 생성하는 방법 검색 , lazy같은것동
-        //팩토리 따로 객체 생성
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +31,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             deleteDialog(contact)
         })
 
-        hospitalViewModel.getHome()
 
 
         val lm = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -51,8 +49,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             startActivity(intent)
         }
     }
-
-
 
 
     private fun deleteDialog(contact: Contact) {
